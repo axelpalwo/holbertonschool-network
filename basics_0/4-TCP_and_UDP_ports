@@ -1,13 +1,9 @@
 #!/usr/bin/env bash
-# A script to display listening ports (TCP/UDP)
-
-if [[ $EUID -ne 0 ]]; then
-    echo "This script must be run as root to display all listening ports"
-    exit 1
-fi
+# A script to display listening ports for any user
 
 echo "Active Internet connections (only servers)"
-netstat -tulnp | grep LISTEN
+netstat -tuln | grep LISTEN
 
+echo
 echo "Active UNIX domain sockets (only servers)"
-netstat -lxp
+netstat -lx

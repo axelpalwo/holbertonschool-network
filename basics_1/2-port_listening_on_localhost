@@ -1,0 +1,6 @@
+#!/bin/bash
+# A script to listen on port 98 on localhost and display received text
+
+echo "Starting my script."
+
+nc -l 98

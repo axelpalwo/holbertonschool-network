@@ -1,2 +1,2 @@
 #!/usr/bin/bash
-ss -tuln
+netstat -tuln

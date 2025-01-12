@@ -1,9 +1,3 @@
 #!/usr/bin/env bash
 # A script to display listening ports for any user
-
-echo "Active Internet connections (only servers)"
-netstat -tuln | grep LISTEN
-
-echo
-echo "Active UNIX domain sockets (only servers)"
-netstat -lx
+netstat -lp

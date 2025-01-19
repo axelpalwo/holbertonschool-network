@@ -1,0 +1,58 @@
+## What Happens When You Type https://www.google.com and Press Enter?
+Ever wondered what happens behind the scenes when you visit a website? Let’s break it down step-by-step in a simple way that connects the dots of the web stack.
+
+# 1. DNS Request: Translating the Domain
+When you type https://www.google.com, your browser needs to figure out which server to contact. It uses the Domain Name System (DNS) to translate the human-readable domain (www.google.com) into an IP address (e.g., 142.250.190.78).
+
+The steps:
+
+ -> The browser first checks its cache to see if it already knows the IP.
+ -> If not, it asks your local DNS resolver (usually managed by your ISP).
+ -> The resolver might contact authoritative DNS servers until it finds the correct IP address.
+
+# 2. TCP/IP: Making a Connection
+Once the IP address is found, your browser uses TCP/IP (Transmission Control Protocol/Internet Protocol) to establish a connection with the server.
+
+• TCP Handshake: Your browser and the server exchange packets to agree on how to communicate. This involves a three-step handshake: SYN (synchronize), SYN-ACK (synchronize acknowledgment), and ACK (acknowledgment).
+IP ensures the packets travel correctly over the internet, using routers to move data between networks.
+
+# 3. Firewall: Securing the Connection
+As your request travels, it passes through firewalls at various points, such as your local network or the web server’s network.
+
+Purpose: Firewalls act as gatekeepers, allowing or blocking traffic based on security rules to protect against malicious activity.3
+
+# 4. HTTPS/SSL: Encrypting Data
+Since you’re using HTTPS, your browser and the server perform an SSL/TLS handshake.
+
+They exchange cryptographic keys to establish a secure, encrypted connection.
+This ensures that sensitive data, like passwords or credit card numbers, cannot be intercepted by attackers.
+
+# 5. Load Balancer: Distributing Traffic
+The request reaches a load balancer, which distributes incoming traffic across multiple servers to ensure high availability and performance.
+
+How It Works: It uses algorithms like round-robin or least connections to decide which server handles your request.
+Load balancers can operate in an Active-Active (all servers handle traffic) or Active-Passive (backup server activates if the primary fails) setup.
+
+# 6. Web Server: Serving Static Content
+The load balancer forwards your request to a web server (e.g., Nginx or Apache).
+
+The web server handles static content like HTML, CSS, and JavaScript files.
+For dynamic requests, it forwards the request to the application server.
+
+# 7. Application Server: Running the Code
+The application server (e.g., Node.js, Django, or Flask) processes the dynamic part of the request.
+
+It executes the backend logic, such as handling user authentication or fetching data from the database.
+
+# 8. Database: Storing and Retrieving Data
+If the request involves data storage or retrieval, the application server queries a database (e.g., MySQL, PostgreSQL).
+
+In a Primary-Replica setup, the primary database handles write operations, while replicas handle read operations to distribute the load.
+
+# Returning the Response
+Once the database provides the required data, the application server generates a response (e.g., an HTML page) and sends it back to the web server.
+
+• The web server then sends the response to the load balancer.
+• The load balancer routes it back to your browser.
+
+Your browser renders the HTML, CSS, and JavaScript, and done! The website appears on your screen.
